@@ -19,9 +19,7 @@ class ScrollViewActivity : AppCompatActivity() {
 
         linear_layout.children.forEach { view ->
             if (view is EditText) {
-                view.isFocusable = false
-                view.isCursorVisible = false
-                view.isFocusableInTouchMode = false
+
                 view.setOnClickListener {
                     RecyclerPopupWindow(this, it, getRandomList()) { index: Int, item: String ->
                         view.setText(item)

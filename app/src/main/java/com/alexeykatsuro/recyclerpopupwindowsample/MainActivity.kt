@@ -6,8 +6,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.alexeykatsuro.recyclerpopupwindow.DropdownPopup
 import com.alexeykatsuro.recyclerpopupwindow.RecyclerPopupWindow
-import kotlinx.android.synthetic.main.activity_scroll_view.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,20 +24,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        edit_text2.setOnClickListener {
-            RecyclerPopupWindow(this, it, list1) { index: Int, item: String ->
-                Toast.makeText(this, item, Toast.LENGTH_SHORT).show()
+        edittext.setOnClickListener {
+            RecyclerPopupWindow(this, edittext, list1) { index: Int, item: String ->
+                edittext.setText(item)
             }
         }
 
-        edit_text.setOnClickListener {
-            RecyclerPopupWindow(this, it, list) { index: Int, item: String ->
-                Toast.makeText(this, item, Toast.LENGTH_SHORT).show()
+        text_input.setEndIconOnClickListener {
+            DropdownPopup(this, text_input, list) { index: Int, item: String ->
+                text_input.editText!!.setText(item)
             }
         }
-        edit_text1.setOnClickListener {
-            RecyclerPopupWindow(this, it, list1) { index: Int, item: String ->
-                Toast.makeText(this, item, Toast.LENGTH_SHORT).show()
+
+        text_input1.setEndIconOnClickListener {
+            RecyclerPopupWindow(this, text_input1, list1) { index: Int, item: String ->
+                text_input1.editText!!.setText(item)
             }
         }
     }
